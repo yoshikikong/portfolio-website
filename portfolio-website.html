@@ -1,0 +1,239 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>VISION · AI 视觉设计作品集</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&display=swap');
+:root {
+  --p: #6219FF; --p80: #8147FF; --p24: rgba(98,25,255,.24); --p10: #F9F5FF; --p6: rgba(98,25,255,.06);
+  --b: #2B2B2B; --b80: rgba(43,43,43,.80); --b64: rgba(43,43,43,.64);
+  --g: #676767; --g20: #F4F4F4;
+  --s: 'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+  --c: 1280px;
+}
+* { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+body { font-family:var(--s); color:var(--b); background:#fff; line-height:1.6; -webkit-font-smoothing:antialiased; }
+.container { max-width:var(--c); margin:0 auto; padding:0 20px; }
+
+/* Type */
+.h1 { font-size:clamp(32px,5vw,56px); font-weight:700; line-height:1.1; letter-spacing:-.03em; }
+.h2 { font-size:clamp(22px,2.8vw,36px); font-weight:600; line-height:1.2; letter-spacing:-.02em; }
+.h3 { font-size:clamp(17px,1.8vw,24px); font-weight:500; line-height:1.3; }
+.h4 { font-size:13px; font-weight:600; text-transform:uppercase; letter-spacing:.06em; color:var(--p); }
+.h5 { font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:.1em; color:var(--g); }
+.body-lg { font-size:17px; line-height:1.6; color:var(--b80); }
+.body { font-size:14px; line-height:1.7; color:var(--b80); }
+.caption { font-size:11px; text-transform:uppercase; letter-spacing:.12em; color:var(--g); }
+
+/* Nav */
+.nav { position:fixed; bottom:24px; left:50%; transform:translateX(-50%); z-index:100; }
+.nav__in { display:flex; align-items:center; gap:2px; padding:5px 10px; background:hsla(0,0%,97%,.82); backdrop-filter:blur(28px); border-radius:75px; box-shadow:0 4px 20px rgba(0,0,0,.07); height:46px; }
+.nav__logo { width:38px; height:38px; display:flex; align-items:center; justify-content:center; border-radius:50%; font-weight:700; font-size:15px; color:var(--p); background:hsla(0,0%,97%,.7); margin-right:2px; text-decoration:none; }
+.nav__btn { height:34px; padding:0 12px; border:none; border-radius:40px; font-family:var(--s); font-size:12px; font-weight:500; cursor:pointer; transition:all .3s; background:transparent; color:var(--b80); white-space:nowrap; }
+.nav__btn:hover { background:var(--p6); }
+.nav__btn--p { background:var(--p); color:#fff; }
+.nav__btn--p:hover { background:var(--p80); }
+
+/* Hero */
+.hero { padding:72px 0 48px; text-align:center; }
+.hero__badge { display:inline-block; padding:3px 12px; background:var(--p6); border-radius:40px; font-size:11px; font-weight:500; color:var(--p); margin-bottom:16px; }
+
+/* Section */
+.section { padding:56px 0; }
+.s--gray { background:var(--p10); }
+
+/* Grid helpers */
+.g { display:grid; gap:1px; }
+.g2 { grid-template-columns:1fr 1fr; gap:20px; }
+.g3 { grid-template-columns:1fr 1fr 1fr; gap:20px; }
+.g4 { grid-template-columns:1fr 1fr 1fr 1fr; gap:1px; }
+
+/* Card */
+.card { display:block; text-decoration:none; color:inherit; background:#fff; transition:background .3s; cursor:pointer; }
+.card:hover { background:var(--p6); }
+.card__img { overflow:hidden; background:var(--g20); }
+.card__img img { width:100%; display:block; transition:transform .6s; }
+.card:hover .card__img img { transform:scale(1.04); }
+.card__bd { padding:14px; }
+.card__t { font-size:15px; font-weight:500; line-height:1.3; }
+.card__m { font-size:12px; color:var(--g); margin-top:3px; display:flex; gap:6px; flex-wrap:wrap; }
+.card__tag { padding:1px 7px; background:var(--g20); font-size:10px; color:var(--p); }
+
+/* Skills */
+.skills { display:flex; flex-wrap:wrap; gap:6px; margin-top:12px; }
+.skill { padding:6px 16px; background:#fff; border:1px solid rgba(98,25,255,.12); border-radius:40px; font-size:12px; font-weight:500; color:var(--b); transition:all .3s; }
+.skill:hover { background:var(--p); color:#fff; border-color:var(--p); }
+
+/* Phil */
+.phil { padding:28px; background:#fff; border:1px solid var(--g20); }
+.phil__num { font-size:40px; font-weight:700; color:var(--p24); line-height:1; margin-bottom:6px; }
+.phil h3 { font-size:16px; font-weight:600; margin-bottom:6px; }
+
+/* Workflow */
+.wf { padding:24px 0; border-bottom:1px solid var(--g20); }
+.wf:last-child { border:none; }
+.wf .body { max-width:540px; margin-top:6px; }
+
+/* Placeholder */
+.placeholder { padding:80px 20px; text-align:center; background:var(--g20); border:2px dashed #ddd; border-radius:4px; }
+.placeholder .h4 { margin-bottom:8px; }
+.placeholder .body { max-width:360px; margin:0 auto; }
+
+/* Newsletter */
+.nl { background:var(--b); padding:64px 0; text-align:center; }
+.nl h2 { color:#fff; font-size:24px; font-weight:500; margin-bottom:10px; }
+.nl p { color:rgba(255,255,255,.55); font-size:15px; margin-bottom:24px; max-width:380px; margin-left:auto; margin-right:auto; }
+.nl__f { display:flex; gap:8px; max-width:400px; margin:0 auto; }
+.nl input { flex:1; padding:12px 16px; border:none; background:rgba(255,255,255,.08); color:#fff; font-size:13px; font-family:var(--s); outline:none; }
+.nl input::placeholder { color:var(--b64); }
+.nl button { padding:12px 24px; border:none; background:var(--p); color:#fff; font-size:12px; font-weight:600; cursor:pointer; font-family:var(--s); transition:background .3s; }
+
+/* Footer */
+.ft { background:var(--b); color:#fff; padding:40px 0 20px; }
+.ft__g { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:24px; padding-bottom:32px; }
+.ft h4 { font-size:11px; font-weight:600; color:#555; text-transform:uppercase; letter-spacing:.1em; margin-bottom:10px; }
+.ft p, .ft a { font-size:13px; color:rgba(255,255,255,.6); text-decoration:none; line-height:2; }
+.ft a:hover { color:#fff; }
+.ft__b { border-top:1px solid #222; padding-top:16px; font-size:11px; color:#444; display:flex; justify-content:space-between; }
+
+/* Cat nav */
+.cat-nav { display:flex; gap:4px; justify-content:center; flex-wrap:wrap; padding:24px 0; }
+.cat-btn { padding:6px 18px; border:1px solid var(--g20); border-radius:40px; background:#fff; font-family:var(--s); font-size:12px; font-weight:500; cursor:pointer; transition:all .3s; color:var(--b80); }
+.cat-btn:hover { border-color:var(--p); }
+.cat-btn--a { background:var(--p); color:#fff; border-color:var(--p); }
+
+/* Two large hero images */
+.hero-works { margin:24px 0 32px; }
+.hero-works .g2 { gap:1px; }
+
+/* Lightbox */
+.lb { position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,.92); z-index:200; display:none; align-items:center; justify-content:center; padding:24px; cursor:pointer; }
+.lb--a { display:flex; }
+.lb img { max-width:92vw; max-height:92vh; object-fit:contain; }
+.lb__c { position:absolute; top:20px; right:20px; background:none; border:none; color:#fff; font-size:32px; cursor:pointer; }
+
+/* Filter */
+.hide { display:none; }
+
+@media (max-width:768px) { .nav { left:12px; right:12px; transform:none; } .nav__in { overflow-x:auto; } .g2,.g3,.g4 { grid-template-columns:1fr; } .ft__g { grid-template-columns:1fr 1fr; } .nl__f { flex-direction:column; } }
+</style>
+</head>
+<body>
+<nav class="nav"><div class="nav__in">
+<a class="nav__logo" href="#">V</a>
+<button class="nav__btn" onclick="filter('all')">All</button>
+<button class="nav__btn" onclick="filter('d3d')">AI 3D</button>
+<button class="nav__btn" onclick="filter('model')">AI 模特+产品</button>
+<button class="nav__btn" onclick="filter('ui')">界面设计</button>
+<button class="nav__btn" onclick="filter('graphic')">平面海报</button>
+<a class="nav__btn nav__btn--p" href="#about">About</a>
+</div></nav>
+
+<section class="hero"><div class="container">
+<div class="hero__badge">AI Visual Designer · 2026</div>
+<h1 class="h1">视觉设计<br>AI 赋能 × 创意驱动</h1>
+<p class="body-lg" style="max-width:500px;margin:16px auto 28px;color:var(--b64)">用 AIGC 探索产品视觉的更多可能性，以设计思维构建品牌与用户的连接。</p>
+<a class="nav__btn nav__btn--p" href="#works" style="display:inline-flex;height:44px;padding:0 32px;font-size:14px;text-decoration:none">View Works</a>
+</div></section>
+
+<section class="section s--gray" id="about"><div class="container">
+<div class="g g2">
+<div><div class="h4">About</div><h2 class="h2">AI 视觉设计师<br>探索技术与美学的交汇点</h2></div>
+<div><p class="body-lg" style="font-weight:500;margin-bottom:10px">熟练运用 Midjourney、Stable Diffusion 等 AI 工具，结合 8 年视觉设计功底，专注于产品视觉的全流程创作。</p>
+<p class="body">从品牌策略到视觉落地，从 AI 生成到后期精修，我关注的是如何让技术服务于设计，让每一件作品都具备商业价值与审美水准。</p>
+</div></div>
+<div style="margin-top:24px"><div class="h5" style="margin-bottom:8px">Tools & Skills</div>
+<div class="skills">
+<span class="skill">Midjourney</span><span class="skill">Stable Diffusion</span><span class="skill">DALL·E 3</span>
+<span class="skill">ComfyUI</span><span class="skill">ControlNet</span><span class="skill">Photoshop</span>
+<span class="skill">Illustrator</span><span class="skill">Figma</span><span class="skill">Prompt Engineering</span>
+<span class="skill">产品海报</span><span class="skill">品牌视觉</span><span class="skill">UI/UX</span>
+</div></div>
+</div></section>
+
+<section class="section"><div class="container" style="text-align:center">
+<div class="h4">Method</div>
+<h2 class="h2" style="margin-bottom:32px">我的设计方法</h2>
+<div class="g g3" style="text-align:left">
+<div class="phil"><div class="phil__num">01</div><h3>AI 生成 · 精准控制</h3><p class="body">通过 Prompt 工程与 ControlNet，让 AI 的输出可控、可预期、可商业化。</p></div>
+<div class="phil"><div class="phil__num">02</div><h3>品牌思维 · 策略先行</h3><p class="body">每一张海报背后都有清晰的品牌逻辑。好看是基础，有效才是目标。</p></div>
+<div class="phil"><div class="phil__num">03</div><h3>后期精修 · 细节至上</h3><p class="body">AI 是起点，不是终点。色彩、光影、构图的精调，让作品从"AI 感"变成"专业感"。</p></div>
+</div></div></section>
+
+<section class="section s--gray" id="works"><div class="container">
+<div style="text-align:center;margin-bottom:32px">
+<div class="h4">Portfolio</div>
+<h2 class="h2">精选作品</h2>
+</div>
+<div class="cat-nav">
+<button class="cat-btn cat-btn--a" onclick="filter('all')">All</button>
+<button class="cat-btn" onclick="filter('d3d')">AI 3D 场景</button>
+<button class="cat-btn" onclick="filter('model')">AI 模特 + 产品</button>
+<button class="cat-btn" onclick="filter('ui')">界面设计</button>
+<button class="cat-btn" onclick="filter('graphic')">平面海报</button>
+</div>
+
+<!-- AI 3D 场景 — placeholder -->
+<div class="hide" data-cat="d3d"><div class="placeholder"><div class="h4">Coming Soon</div><div class="body">AI 生成的 3D 产品场景作品正在创作中……</div></div></div>
+
+<!-- AI 模特 + 产品结合 -->
+<div data-cat="model">
+<div class="wf"><div class="h4">Featured</div><div class="h2" style="font-weight:600">AI 模特 × 产品</div><p class="body" style="max-width:540px;margin-top:6px">AI 生成的人物形象与产品结合的视觉探索。以色彩情绪驱动设计，让模特成为产品叙事的一部分。</p></div>
+<div class="hero-works"><div class="g g2">
+<div class="card" onclick="lb('./ai产品海报/人樱花粉.jpg')"><div class="card__img"><img src="./ai产品海报/人樱花粉.jpg" alt="人樱花粉" style="aspect-ratio:16/10;object-fit:cover"></div></div>
+<div class="card" onclick="lb('./ai产品海报/人丁香紫.jpg')"><div class="card__img"><img src="./ai产品海报/人丁香紫.jpg" alt="人丁香紫" style="aspect-ratio:16/10;object-fit:cover"></div></div>
+</div></div>
+<div class="g g4">
+<div class="card" onclick="lb('./ai产品海报/人奶油黄.jpg')"><div class="card__img"><img src="./ai产品海报/人奶油黄.jpg" alt="人奶油黄" style="aspect-ratio:1/1;object-fit:cover"></div><div class="card__bd"><div class="card__t">奶油黄</div><div class="card__m"><span class="card__tag">AI Portrait</span></div></div></div>
+<div class="card" onclick="lb('./ai产品海报/人幸运绿.jpg')"><div class="card__img"><img src="./ai产品海报/人幸运绿.jpg" alt="人幸运绿" style="aspect-ratio:1/1;object-fit:cover"></div><div class="card__bd"><div class="card__t">幸运绿</div><div class="card__m"><span class="card__tag">AI Portrait</span></div></div></div>
+<div class="card" onclick="lb('./ai产品海报/My Grimmi.jpg')"><div class="card__img"><img src="./ai产品海报/My Grimmi.jpg" alt="My Grimmi" style="aspect-ratio:1/1;object-fit:cover"></div><div class="card__bd"><div class="card__t">My Grimmi</div><div class="card__m"><span class="card__tag">AI Character</span></div></div></div>
+<div class="card" onclick="lb('./ai产品海报/夏日系列.jpg')"><div class="card__img"><img src="./ai产品海报/夏日系列.jpg" alt="夏日系列" style="aspect-ratio:1/1;object-fit:cover"></div><div class="card__bd"><div class="card__t">夏日系列</div><div class="card__m"><span class="card__tag">Product</span></div></div></div>
+</div></div>
+
+<!-- 界面设计 — placeholder -->
+<div class="hide" data-cat="ui"><div class="placeholder"><div class="h4">Coming Soon</div><div class="body">Web / App 界面设计作品整理中，展示 UI 信息架构与交互设计能力。</div></div></div>
+
+<!-- 平面海报 — placeholder -->
+<div class="hide" data-cat="graphic"><div class="placeholder"><div class="h4">Coming Soon</div><div class="body">非 AI 的平面海报设计作品，展示传统排版与视觉传达功底。</div></div></div>
+</div></section>
+
+<section class="nl"><div class="container">
+<h2>关注动态</h2>
+<p>新作品上线第一时间通知你，也会分享 AI 设计的心得与工作流。</p>
+<div class="nl__f"><input type="email" placeholder="your@email.com"><button>Subscribe</button></div>
+</div></section>
+
+<footer class="ft"><div class="container">
+<div class="ft__g">
+<div><h4>Vision Design</h4><p style="line-height:1.6">AI 视觉设计 · 产品海报 · 品牌视觉<br>用 AIGC 探索设计的新边界。</p></div>
+<div><h4>Categories</h4><p><a href="javascript:void(0)" onclick="filter('d3d')">AI 3D 场景</a><br><a href="javascript:void(0)" onclick="filter('model')">AI 模特+产品</a><br><a href="javascript:void(0)" onclick="filter('ui')">界面设计</a><br><a href="javascript:void(0)" onclick="filter('graphic')">平面海报</a></p></div>
+<div><h4>Connect</h4><p><a href="#">Instagram</a><br><a href="#">Behance</a><br><a href="#">Pinterest</a><br><a href="#">小红书</a></p></div>
+<div><h4>Info</h4><p><a href="#">About Me</a><br><a href="#">Contact</a><br><a href="#">合作咨询</a></p></div>
+</div>
+<div class="ft__b"><span>© 2026 VISION · AI Visual Design</span><span>Designed with ❤️</span></div>
+</div></footer>
+
+<div class="lb" id="lb" onclick="closeLb()"><button class="lb__c">&times;</button><img id="lb-img" src="" alt=""></div>
+
+<script>
+function filter(c) {
+  document.querySelectorAll('.cat-btn').forEach(b=>b.classList.remove('cat-btn--a'));
+  document.querySelectorAll('.cat-btn').forEach(b=>{if(b.textContent.includes('All')&&c==='all')b.classList.add('cat-btn--a')});
+  document.querySelectorAll('.cat-btn').forEach(b=>{
+    const m={d3d:'AI 3D',model:'AI 模特',ui:'界面',graphic:'平面'};
+    for(let [k,v] of Object.entries(m)){if(c===k&&b.textContent.includes(v))b.classList.add('cat-btn--a');}
+  });
+  if(c==='all'){document.querySelectorAll('[data-cat]').forEach(el=>el.classList.remove('hide'));document.getElementById('works').scrollIntoView({behavior:'smooth'});return;}
+  document.querySelectorAll('[data-cat]').forEach(el=>{
+    el.classList.toggle('hide',el.dataset.cat!==c);
+  });
+  document.getElementById('works').scrollIntoView({behavior:'smooth'});
+}
+function lb(s){document.getElementById('lb-img').src=s;document.getElementById('lb').classList.add('lb--a');document.body.style.overflow='hidden';}
+function closeLb(){document.getElementById('lb').classList.remove('lb--a');document.body.style.overflow='';}
+</script>
+</body>
+</html>
